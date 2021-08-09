@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: test
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+    level: debug
+  file:
+    path: "."
+    name: "springboot.log"
+    max-size: "10MB"
