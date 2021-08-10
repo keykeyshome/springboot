@@ -1,8 +1,8 @@
-package org.xxxx.springboot;
+package com.xxxx.springboot;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Date 2021-08-08 0:02
  */
 @SpringBootApplication
+@MapperScan("com.xxxx.springboot.dao")
 public class StartApplication {
     private static Logger logger = LoggerFactory.getLogger(StartApplication.class);
 
