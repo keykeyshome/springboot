@@ -1,5 +1,6 @@
 package com.xxxx.springboot.dao;
 
+import com.xxxx.springboot.query.UserQuery;
 import com.xxxx.springboot.vo.User;
 import org.springframework.stereotype.Repository;
 
@@ -17,5 +18,5 @@ public interface UserDao {
 
     int delete(Integer id);
 
-    List<User> selectByParams();
+    List<User> selectByParams(UserQuery userQuery);
 }

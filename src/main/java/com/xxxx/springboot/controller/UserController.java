@@ -1,7 +1,9 @@
 package com.xxxx.springboot.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.xxxx.springboot.exceptions.ParamException;
 import com.xxxx.springboot.model.ResultInfo;
+import com.xxxx.springboot.query.UserQuery;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +79,11 @@ public class UserController {
             resultInfo.setMsg("用户删除失败");
         }
         return resultInfo;
+    }
+
+    @GetMapping("user/list")
+    public PageInfo<User> queryUserByParams(UserQuery userQuery){
+        return userService.queryByParams(userQuery);
     }
 
 }

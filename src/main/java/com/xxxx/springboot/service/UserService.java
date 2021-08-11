@@ -1,11 +1,16 @@
 package com.xxxx.springboot.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xxxx.springboot.query.UserQuery;
 import com.xxxx.springboot.untils.AssertUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.xxxx.springboot.dao.UserDao;
 import com.xxxx.springboot.vo.User;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -45,6 +50,13 @@ public class UserService {
     public void delete(Integer userId) {
         AssertUtil.isTrue(null != userId || null == userDao.queryById(userId), "该用户不存在");
         AssertUtil.isTrue(userDao.delete(userId) < 1, "用户删除失败");
+
+    }
+
+    public PageInfo<User> queryByParams(UserQuery userQuery) {
+        PageHelper.startPage(userQuery.getPageNum(),userQuery.getPageSize());
+        List<User> users = userDao.selectByParams(userQuery);
+        return new PageInfo<User>(users);
 
     }
 
