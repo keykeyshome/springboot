@@ -18,7 +18,6 @@ import com.xxxx.springboot.vo.User;
 public class UserController {
     @Autowired
     UserService userService;
-
     @GetMapping("user/uname/{userName}")
     @ApiOperation(value = "用户模块-根据用户名查询用户")
     @ApiImplicitParam(name = "userName",value = "查询参数",required = true,paramType = "path")
@@ -27,11 +26,15 @@ public class UserController {
     }
 
     @GetMapping("user/{userId}")
+    @ApiOperation(value = "用户模块-根据用户ID询用户")
+    @ApiImplicitParam(name = "userId",value = "查询参数",required = true,paramType = "path")
     public User queryUserByUserId(@PathVariable Integer userId) {
         return userService.queryByUserId(userId);
     }
 
     @PutMapping("user")
+    @ApiOperation(value = "用户模块-添加用户")
+    @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
     public ResultInfo saveUser(@RequestBody User user) {
         ResultInfo resultInfo = new ResultInfo();
         try {
@@ -52,6 +55,7 @@ public class UserController {
 
     @PostMapping("user")
     @ApiOperation(value = "用户模块-更新用户")
+    @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
     public ResultInfo updateUser(@RequestBody User user) {
         ResultInfo resultInfo = new ResultInfo();
         try {
@@ -69,6 +73,8 @@ public class UserController {
     }
 
     @DeleteMapping("user/{id}")
+    @ApiOperation(value = "用户模块-用户删除")
+    @ApiImplicitParam(name = "id",value = "用户id",required = true,paramType = "path")
     public ResultInfo updateUser(@PathVariable Integer id) {
         ResultInfo resultInfo = new ResultInfo();
         try {
@@ -86,6 +92,7 @@ public class UserController {
     }
 
     @GetMapping("user/list")
+    @ApiOperation(value = "用户模块-用户列表查询")
     public PageInfo<User> queryUserByParams(UserQuery userQuery){
         return userService.queryByParams(userQuery);
     }
