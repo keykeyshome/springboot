@@ -53,7 +53,7 @@ public class UserController {
     }
 
 
-    @PostMapping("user")
+    @PostMapping(value = "user", produces = "application/json; charset=utf-8")
     @ApiOperation(value = "用户模块-更新用户")
     @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
     public ResultInfo updateUser(@RequestBody User user) {

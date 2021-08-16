@@ -35,4 +35,13 @@ public class User {
     public void setUserPwd(String userPwd) {
         this.userPwd = userPwd;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                '}';
+    }
 }
