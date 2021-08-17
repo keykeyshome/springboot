@@ -3,8 +3,10 @@ package com.xxxx.springboot.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 @ApiModel(description = "用户实体对象")
-public class User {
+public class User implements Serializable {
     @ApiModelProperty(value = "用户id主键")
     private Integer id;
     @ApiModelProperty(value = "用户名字")

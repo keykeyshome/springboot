@@ -10,3 +10,7 @@ spring:
       #  解决项目重启后404问题
       poll-interval: 3000
       quiet-period: 1000
+#  开启ehcache
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml
