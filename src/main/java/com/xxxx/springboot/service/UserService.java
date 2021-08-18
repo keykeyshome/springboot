@@ -11,6 +11,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.xxxx.springboot.dao.UserDao;
 import com.xxxx.springboot.vo.User;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -51,11 +53,12 @@ public class UserService {
 
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @CacheEvict(value = "users", allEntries = true)
     public void delete(Integer userId) {
         AssertUtil.isTrue(null == userId || null == userDao.queryById(userId), "该用户不存在");
         AssertUtil.isTrue(userDao.delete(userId) < 1, "用户删除失败");
-
+        int a = 1 / 0;
     }
 
     @Cacheable(value = "users", key = "#userQuery.userName+'-'+#userQuery.pageNum+'-'+#userQuery.pageSize")

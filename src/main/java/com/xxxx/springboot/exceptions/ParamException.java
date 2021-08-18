@@ -9,13 +9,20 @@ public class ParamException extends RuntimeException {
     private String msg = "参数异常";
 
     public ParamException(Integer code, String msg) {
-        this.code = code;
+        super(msg);
         this.msg = msg;
+        this.code = code;
+    }
+
+    public ParamException(Integer code) {
+        this.code = code;
     }
 
 
     public ParamException(String msg) {
+        super(msg);
         this.msg = msg;
+
     }
 
     public Integer getCode() {

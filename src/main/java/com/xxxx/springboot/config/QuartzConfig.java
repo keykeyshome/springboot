@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Configuration;
  * @Author QJJ
  * @Date 2021-08-18 1:13
  */
+//springboot配置quartz 定时任务
+
+
+/*
 @Configuration
 public class QuartzConfig {
     @Bean
@@ -16,7 +20,7 @@ public class QuartzConfig {
         return JobBuilder.newJob(MyJob.class).storeDurably().build();
     }
 
-//    @Bean
+    @Bean
     public Trigger trigger1() {
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
                 .withIntervalInSeconds(1).repeatForever();
@@ -25,10 +29,11 @@ public class QuartzConfig {
                 .forJob(jobDetail()).build();
     }
 
-//    @Bean
+    @Bean
     public Trigger trigger2() {
         return TriggerBuilder.newTrigger().withIdentity("trigger2", "group1")
                 .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ? "))
                 .forJob(jobDetail()).build();
     }
 }
+*/

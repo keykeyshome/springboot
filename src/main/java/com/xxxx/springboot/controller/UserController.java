@@ -37,7 +37,9 @@ public class UserController {
     @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
     public ResultInfo saveUser(@RequestBody User user) {
         ResultInfo resultInfo = new ResultInfo();
-        try {
+        //添加全局异常处理后可以不用捕捉异常
+
+     /*   try {
             userService.saveUser(user);
 
         } catch (ParamException paramException) {
@@ -48,7 +50,9 @@ public class UserController {
 
             resultInfo.setCode(300);
             resultInfo.setMsg(e.getMessage());
-        }
+        }*/
+        userService.saveUser(user);
+
         return resultInfo;
     }
 
@@ -58,7 +62,8 @@ public class UserController {
     @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
     public ResultInfo updateUser(@RequestBody User user) {
         ResultInfo resultInfo = new ResultInfo();
-        try {
+        //添加全局异常处理后可以不用捕捉异常
+       /* try {
             userService.updateUser(user);
 
         } catch (ParamException paramException) {
@@ -68,7 +73,9 @@ public class UserController {
         } catch (Exception e) {
             resultInfo.setCode(300);
             resultInfo.setMsg("用户更新失败");
-        }
+        }*/
+        userService.updateUser(user);
+
         return resultInfo;
     }
 
@@ -77,7 +84,9 @@ public class UserController {
     @ApiImplicitParam(name = "id",value = "用户id",required = true,paramType = "path")
     public ResultInfo updateUser(@PathVariable Integer id) {
         ResultInfo resultInfo = new ResultInfo();
-        try {
+        //添加全局异常处理后可以不用捕捉异常
+
+      /*  try {
             userService.delete(id);
 
         } catch (ParamException paramException) {
@@ -86,8 +95,9 @@ public class UserController {
 
         } catch (Exception e) {
             resultInfo.setCode(300);
-            resultInfo.setMsg("用户删除失败");
-        }
+            resultInfo.setMsg(e.getMessage());
+        }*/
+        userService.delete(id);
         return resultInfo;
     }
 
