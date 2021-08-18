@@ -43,10 +43,9 @@ public class UserService {
         AssertUtil.isTrue(StringUtils.isBlank(user.getUserName()), "用户名不能为空");
         AssertUtil.isTrue(StringUtils.isBlank(user.getUserPwd()), "密码不能为空");
         AssertUtil.isTrue(null == userDao.queryById(user.getId()), "用户不存在");
-        AssertUtil.isTrue(userDao.update(user) < 1, "用户更新失败");
         //用户名唯一校验
         User temp = userDao.queryUserByUserName(user.getUserName());
-        AssertUtil.isTrue(null != temp && !temp.getId().equals(user.getId()), "用户已经存在");
+        AssertUtil.isTrue(null != temp && !(temp.getId().equals(user.getId())), "用户已经存在");
         AssertUtil.isTrue(userDao.update(user) < 1, "用户更新失败");
 
 
@@ -54,7 +53,7 @@ public class UserService {
 
     @CacheEvict(value = "users", allEntries = true)
     public void delete(Integer userId) {
-        AssertUtil.isTrue(null != userId || null == userDao.queryById(userId), "该用户不存在");
+        AssertUtil.isTrue(null == userId || null == userDao.queryById(userId), "该用户不存在");
         AssertUtil.isTrue(userDao.delete(userId) < 1, "用户删除失败");
 
     }
