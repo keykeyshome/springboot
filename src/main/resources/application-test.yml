@@ -8,6 +8,27 @@ spring:
     url: jdbc:mysql://49.234.144.78:3306/mybatis?useSSL=false&useUnicode=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  #redis集群
+  redis:
+    host: 49.234.144.78
+    port: 6379
+    database: 0
+    timeout: 10000ms
+    password: 123456
+    #    集群环境打开下面注释，单机不需要打开
+    #    cluster:
+    #      集群信息
+    #      nodes: xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx
+    #      #默认值是5 一般当此值设置过大时，容易报：Too many Cluster redirections
+    #      maxRedirects: 3
+    lettuce:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1
+
+
 
 mybatis:
   mapper-locations: classpath:/mappers/*.xml
@@ -30,3 +51,4 @@ logging:
     path: "."
     name: "springboot.log"
     max-size: "10MB"
+

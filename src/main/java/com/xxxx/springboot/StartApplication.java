@@ -12,13 +12,13 @@ import org.springframework.cache.annotation.EnableCaching;
  * @Date 2021-08-08 0:02
  */
 @SpringBootApplication
-@MapperScan("com.xxxx.springboot.dao")
+//@MapperScan("com.xxxx.springboot.dao")
 @EnableCaching
 public class StartApplication {
     private static Logger logger = LoggerFactory.getLogger(StartApplication.class);
 
     public static void main(String[] args) {
-        logger.info("Springboot 启动");
+//        logger.info("Springboot 启动");
         SpringApplication.run(StartApplication.class);
 //启动不打印图标
         /*SpringApplication springApplication = new SpringApplication(StartApplication.class);

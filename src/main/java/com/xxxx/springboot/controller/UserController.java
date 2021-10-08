@@ -18,6 +18,7 @@ import com.xxxx.springboot.vo.User;
 public class UserController {
     @Autowired
     UserService userService;
+
     @GetMapping("user/uname/{userName}")
     @ApiOperation(value = "用户模块-根据用户名查询用户")
     @ApiImplicitParam(name = "userName",value = "查询参数",required = true,paramType = "path")
@@ -33,6 +34,7 @@ public class UserController {
     }
 
     @PutMapping("user")
+
     @ApiOperation(value = "用户模块-添加用户")
     @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
     public ResultInfo saveUser(@RequestBody User user) {
