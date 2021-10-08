@@ -9,9 +9,12 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.xxxx.springboot.service.UserService;
 import com.xxxx.springboot.vo.User;
+
+import javax.validation.Valid;
 
 @RestController
 @Api(tags = "用户管理模块")
@@ -62,7 +65,7 @@ public class UserController {
     @PostMapping(value = "user", produces = "application/json; charset=utf-8")
     @ApiOperation(value = "用户模块-更新用户")
     @ApiImplicitParam(name = "user",value = "用户实体类",required = true,dataType = "User")
-    public ResultInfo updateUser(@RequestBody User user) {
+    public ResultInfo updateUser(@RequestBody @Valid User user) {
         ResultInfo resultInfo = new ResultInfo();
         //添加全局异常处理后可以不用捕捉异常
        /* try {
